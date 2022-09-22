@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}
+<h1>Confirma la eliminacion del {{ object }} ?</h1>
+<button type="submit" name="button">Confirmar</button>
+<td><button onclick="location.href='{% url "Blog"  %}'">Cancelar</button></td>
+</form>

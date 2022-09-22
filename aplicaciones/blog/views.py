@@ -1,18 +1,45 @@
 from ast import arg
+from msilib.schema import ListView
 from venv import create
 from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
 from . forms import BlogCreateForm
 from . models import Post
+from django.urls import reverse_lazy
 
 # Create your views here.
 
-class blogListView(View):
+
+        
+class BlogList(ListView):
+    model = Post
+    template_name = 'blog.html'
+    
+class BlogCreate(CreateView):
+    model = Post
+    form_class = BlogCreateForm
+    template_name = 'blog_create.html'
+    success_url = reverse_lazy('Index')
+    
+class BlogUpdate(UpdateView):
+    model = Post
+    form_class = BlogCreateForm
+    template_name = 'blog_create.html'
+    success_url = reverse_lazy('Blog')
+
+class BlogDelete(DeleteView):
+    model = Post
+    template_name = 'verificacion.html'
+    success_url = reverse_lazy('Blog')
+    
+    
+'''class blogListView(View):
     def get(self,request,*args, **kwargs):
         contexto={
             
         }
         return render(request, 'blog.html', contexto)
+
     
 class blogCreateView(View):
     def get(self,request,*args, **kwargs):     
@@ -34,6 +61,5 @@ class blogCreateView(View):
         contexto={
             
         }
-        return render(request, 'blog_create.html', contexto)
-
+        return render(request, 'blog_create.html', contexto)'''
 
