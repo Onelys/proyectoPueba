@@ -4,7 +4,7 @@ from .models import Post
 
 # Register your models here.
 
-class PostAdmin(admin.ModelAdmin):
-    readonly_fields=('created', 'updated')
+'''class PostAdmin(admin.ModelAdmin):
+    readonly_fields=('created', 'updated')'''
 
-admin.site.register(Post, P)
+admin.site.register(Post)
